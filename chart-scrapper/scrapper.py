@@ -3,7 +3,7 @@ import sys
 import json
 import os
 
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from bs4 import BeautifulSoup
 
 from track import Track
@@ -30,13 +30,28 @@ class Scrapper:
     def connect_to_web_site(self):
         link = self.get_full_link()
         print("Connecting to " + link)
-        page = self.session.get(link, verify = False)
-        if page.status_code == 200:
-            print("Connected")
-            self.scrap_info_from_page(page.text)
-        else:
-            print("Unable to connect to " + link + ". Aborting...")
-            sys.exit()
+        try:
+            page = self.session.get(link, verify = False)
+            if page.status_code == 200:
+                print("Connected")
+                self.scrap_info_from_page(page.text)
+            else:
+                print("Trying again to connect... " + link)
+                page = self.session.get(link, verify = False)
+                if page.status_code == 200:
+                    print("Connected")
+                    self.scrap_info_from_page(page.text)
+                else:
+                    print("Unable to connect to " + link + ". Reporting...")
+                    with open("logfile", "a") as logFile:
+                        logFile.write("- Unable to connect to "+link+" at " + str(datetime.now()) + " \n")
+                        self.change_date()
+        except Exception as e:
+            print("Exception raised " + link + ". Reporting...")
+            with open("logfile", "a") as logFile:
+                logFile.write("- An exception was raised for "+link+" at " + str(datetime.now()) + ". Exception: " + str(e) + "\n")
+                self.change_date()
+
     
     def get_full_link(self):
         return self.base_link + self.country + "/" + self.frequency + "/" + str(self.current_date)
@@ -45,8 +60,7 @@ class Scrapper:
         self.current_date = self.current_date + timedelta(days=1)
     
     def should_stop(self):
-        return self.current_date == date(2017, 1, 10)
-        # return self.current_date == self.end_date
+        return self.current_date == self.end_date
 
     
     def scrap_info_from_page(self, page_text):

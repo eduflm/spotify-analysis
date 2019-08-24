@@ -1,8 +1,10 @@
 import json
+from datetime import datetime
+
 
 class Track:
     def __init__(self, artist, track_name, number_of_streams, track_link, image_path, chart_position, trend, date):
-        self.track_artist = self.get_track_artist(artist);
+        self.track_artist = self.get_track_artist(artist)
         self.track_name = track_name
         self.track_number_of_streams = number_of_streams
         self.track_link = track_link
@@ -10,7 +12,7 @@ class Track:
         self.track_chart_position = chart_position
         self.trend = trend
         self.track_id = self.get_track_id()
-        self.date = f'{date:%Y-%m-%d}'
+        self.date = datetime.combine(date, datetime.min.time())
     
     def get_track_id(self):
         return self.track_link.replace("https://open.spotify.com/track/","")
