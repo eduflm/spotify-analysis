@@ -4,9 +4,10 @@ import json
 import os
 
 from datetime import date, timedelta
-
 from bs4 import BeautifulSoup
+
 from track import Track
+from database import Database
 
 
 class Scrapper: 
@@ -21,6 +22,7 @@ class Scrapper:
         
         self.tracks = []
         self.session = requests.Session()
+        self.database = Database()
 
         return
 
@@ -43,7 +45,7 @@ class Scrapper:
         self.current_date = self.current_date + timedelta(days=1)
     
     def should_stop(self):
-        return self.current_date == date(2017, 1, 7)
+        return self.current_date == date(2017, 1, 10)
         # return self.current_date == self.end_date
 
     
@@ -56,16 +58,19 @@ class Scrapper:
             track_link = track_component.find_all("td", {"class": "chart-table-image"})[0].find_all("a", href=True)[0]['href']
             track_image_link = track_component.find_all("td", {"class": "chart-table-image"})[0].find_all("a", href=True)[0].find_all("img")[0]['src']
             track_chart_position = int(track_component.find_all("td", {"class": "chart-table-position"})[0].text)
+            track_trend = self.define_trend(track_component)
 
-            new_track = Track(track_artist, track_name, track_streams, track_link, track_image_link, track_chart_position, True)
+            new_track = Track(track_artist, track_name, track_streams, track_link, track_image_link, track_chart_position, track_trend, self.current_date)
 
             # print(new_track.to_json())
 
-            self.tracks.append(new_track.__dict__)
+            self.tracks.append(new_track)
         
-        self.write_file()
+        self.database.write_tracks(self.tracks)
+        self.tracks = []
         self.change_date()
     
+    #Unused
     def write_file(self):
         folder_name = "data"
         if not os.path.exists(folder_name):
@@ -76,7 +81,24 @@ class Scrapper:
             json.dump(self.tracks, output_file)
         self.track = []
         print("Done! The file " + file_path + " was created!")
+    
+    def define_trend(self, track_component):
+        svg = track_component.find_all("svg")[0]
+        if svg.find('rect') :
+            return "neutral"
+        elif svg.find('circle'):
+            return "new"
+        else:
+            points = svg.find_all('polygon')[0]['points']
+            points = points.replace(" ","")
+            if points == "0912963":
+                return "up"
+            elif points == "1230369":
+                return "down"
+            else:
+                return "undefined"
 
+        
 
 
 if __name__ == "__main__":
