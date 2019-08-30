@@ -32,3 +32,16 @@ class Database:
                 "number_of_streams" : track.track_number_of_streams,
                 "trend" : track.trend
             })
+    
+    #TODO: Implementar
+    def insert_audio_features(self, audio_features):
+        return None
+
+    
+    def get_tracks_id(self):
+        track_basic_info_collection = self.db.track_basic_info
+        tracks_ids = track_basic_info_collection.find({}, {"spotify_track_id" : 1})
+        ids = []
+        for track_id in tracks_ids:
+            ids.append(track_id['spotify_track_id'])
+        return ids
