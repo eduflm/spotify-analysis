@@ -32,12 +32,28 @@ class Database:
                 "number_of_streams" : track.track_number_of_streams,
                 "trend" : track.trend
             })
-    
-    #TODO: Implementar
+        
     def insert_audio_features(self, audio_features):
-        return None
-
-    
+        audio_features_collection = self.db.audio_features
+        for audio_feature in audio_features:
+            insert = audio_features_collection.insert_one({
+                "track_basic_id" : audio_feature.track_basic_id,
+                "duration" : audio_feature.duration,
+                "key" : audio_feature.key,
+                "mode" : audio_feature.mode,
+                "time_signature" : audio_feature.time_signature,
+                "acousticness" : audio_feature.acousticness,
+                "danceability" : audio_feature.danceability,
+                "energy" : audio_feature.energy,
+                "instrumentalness" : audio_feature.instrumentalness,
+                "liveness" : audio_feature.liveness,
+                "loudness" : audio_feature.loudness,
+                "speechiness" : audio_feature.speechiness,
+                "valence" : audio_feature.valence,
+                "tempo" : audio_feature.tempo
+            })
+        print("Músicas inseridas com sucesso!")
+        
     def get_tracks_id(self):
         track_basic_info_collection = self.db.track_basic_info
         tracks_ids = track_basic_info_collection.find({}, {"spotify_track_id" : 1})

@@ -69,8 +69,11 @@ class APIScrapper:
 
                 self.musics_with_features.append(music_with_features)
 
+        database = Database()
 
-            sys.exit()
+        database.insert_audio_features(self.musics_with_features)
+
+        return 
 
 
 if __name__ == "__main__":

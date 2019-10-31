@@ -16,8 +16,8 @@ class Scrapper:
         self.base_link = "https://spotifycharts.com/regional/"
         self.country = "br"
         self.frequency = "daily"
-        self.start_date = date(2017, 1, 1)
-        self.end_date = date(2019, 8, 21)
+        self.start_date = date(2018, 4, 26)
+        self.end_date = date(2018, 4, 27)
         self.current_date = self.start_date
         
         self.tracks = []
