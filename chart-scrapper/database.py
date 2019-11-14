@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import isodate
 
 class Database:
 
@@ -34,10 +35,11 @@ class Database:
             })
         
     def insert_audio_features(self, audio_features):
-        audio_features_collection = self.db.audio_features
+        track_basic_info_collection = self.db.track_basic_info
         for audio_feature in audio_features:
-            insert = audio_features_collection.insert_one({
-                "track_basic_id" : audio_feature.track_basic_id,
+            basic_id = audio_feature.track_basic_id
+            find_query = {"spotify_track_id" : basic_id}
+            update = track_basic_info_collection.update_one(find_query, { "$set" : {"features" : {
                 "duration" : audio_feature.duration,
                 "key" : audio_feature.key,
                 "mode" : audio_feature.mode,
@@ -51,6 +53,7 @@ class Database:
                 "speechiness" : audio_feature.speechiness,
                 "valence" : audio_feature.valence,
                 "tempo" : audio_feature.tempo
+            }}
             })
         print("Músicas inseridas com sucesso!")
         
@@ -61,3 +64,41 @@ class Database:
         for track_id in tracks_ids:
             ids.append(track_id['spotify_track_id'])
         return ids
+    
+    def get_week(self, day_of_the_month):
+        if day_of_the_month <= 8:
+            return 1
+        elif day_of_the_month <= 16:
+            return 2
+        elif day_of_the_month <= 24:
+            return 3
+        else:
+            return 4
+    
+    def normalize_dates(self):
+        charts_collection = self.db.chart
+        charts = charts_collection.find()
+
+        for chart in charts:
+            chart_id = chart["_id"]
+            day = int(chart['date'].day)
+            month = int(chart['date'].month)
+            week = self.get_week(day)
+            update = charts_collection.update_one({"_id" : chart_id}, {"$set" : {"week" : week, "month" : month}})
+            print("Chart " + str(chart_id) + " updated")
+    
+    def get_all_charts(self):
+        charts_collection = self.db.chart
+        charts = charts_collection.find()
+        return charts
+    
+    def get_all_track_basic_info(self):
+        track_basic_info = self.db.track_basic_info
+        tracks = track_basic_info.find()
+        return tracks
+
+
+
+# if __name__ == "__main__":
+#     database = Database()
+#     database.normalize_dates()
