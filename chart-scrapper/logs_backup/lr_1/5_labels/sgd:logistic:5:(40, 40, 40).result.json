@@ -1,0 +1,1 @@
+{"solver": "sgd", "activation_function": "logistic", "layers": [40, 40, 40], "last_loss": 1.6148781240580279, "last_iteration": 18, "training_score": 0.2, "test_score": 0.2, "fit_time": 29.775911569595337, "number_of_labels": 5, "learning_rate": 1}

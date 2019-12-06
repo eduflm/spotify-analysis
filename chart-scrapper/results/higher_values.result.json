@@ -1,0 +1,34 @@
+{
+    "higher_acousticness": 0.3394415399399382, 
+    "higher_acousticness_month": "may", 
+    "higher_acousticness_week": "fourth_week", 
+    
+    "higher_danceability": 0.6343406862745098, 
+    "higher_danceability_month": "december", 
+    "higher_danceability_week": "second_week", 
+    
+    "higher_energy": 0.7078698327023433, 
+    "higher_energy_month": "january", 
+    "higher_energy_week": "first_week", 
+    
+    "higher_instrumentalness": 0.010357337813849891, 
+    "higher_instrumentalness_month": "november", 
+    "higher_instrumentalness_week": "third_week", 
+    
+    "higher_liveness": 0.2986659137842024, 
+    "higher_liveness_month": "september", 
+    "higher_liveness_week": "second_week", 
+    
+    "higher_speechiness": 0.11778772917228364, 
+    "higher_speechiness_month": "august", 
+    "higher_speechiness_week": "third_week", 
+    
+    "higher_valence": 0.6206828034130631, 
+    "higher_valence_month": "december", 
+    "higher_valence_week": "fourth_week", 
+    
+    "higher_tempo": 0.4867376362838989, 
+    "higher_tempo_month": "september", 
+    "higher_tempo_week": "third_week"
+    
+}

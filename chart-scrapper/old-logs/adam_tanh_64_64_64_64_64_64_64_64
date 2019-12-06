@@ -1,0 +1,8 @@
+solver=adam
+activation=tanh
+layers=(64, 64, 64, 64, 64, 64, 64, 64)
+last_loss=1.1243377433237718
+last_iteration=197
+training_score=0.5540477977977978
+test_score=0.5144394394394395
+time_elapsed=1597.103814125061

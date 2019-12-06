@@ -154,7 +154,7 @@ class Database:
                 "valence" : track['features']['valence'],
                 "tempo" : track['features']['tempo'],
                 "artist" : track['artist'],
-                "position" : chart['position']
+                "position" : chart['chart_position']
             }
 
             models.append(model)

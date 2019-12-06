@@ -1,0 +1,8 @@
+solver=sgd
+activation=relu
+layers=(32, 32, 32, 32)
+last_loss=2.28806018944988
+last_iteration=80
+training_score=0.12492492492492492
+test_score=0.1226976976976977
+time_elapsed=93.52193522453308

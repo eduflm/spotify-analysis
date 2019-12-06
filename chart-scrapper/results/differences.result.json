@@ -1,0 +1,33 @@
+{
+    "best_acousticness_difference": 0.03759229340574399, 
+    "best_acousticness_difference_month": "may - january", 
+    "best_acousticness_difference_week": "fourth_week - first_week", 
+
+    "best_danceability_difference": 0.02064379084967316, 
+    "best_danceability_difference_month": "december - september", 
+    "best_danceability_difference_week": "second_week - third_week", 
+
+    "best_energy_difference": 0.028109267880896405, 
+    "best_energy_difference_month": "january - november", 
+    "best_energy_difference_week": "first_week - fourth_week", 
+
+    "best_instrumentalness_difference": 0.0052394257599570615, 
+    "best_instrumentalness_difference_month": "november - march", 
+    "best_instrumentalness_difference_week": "third_week - fourth_week", 
+
+    "best_liveness_difference": 0.04529923851316464, 
+    "best_liveness_difference_month": "september - november", 
+    "best_liveness_difference_week": "second_week - fourth_week", 
+
+    "best_speechiness_difference": 0.020737521906174172, 
+    "best_speechiness_difference_month": "august - november", 
+    "best_speechiness_difference_week": "third_week - first_week", 
+
+    "best_valence_difference": 0.031431013691939125, 
+    "best_valence_difference_month": "december - october", 
+    "best_valence_difference_week": "fourth_week - third_week", 
+    
+    "best_tempo_difference": 0.014031998031596493, 
+    "best_tempo_difference_month": "september - april", 
+    "best_tempo_difference_week": "third_week - second_week"
+}

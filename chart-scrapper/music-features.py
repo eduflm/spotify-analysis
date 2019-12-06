@@ -93,3 +93,11 @@ if __name__ == "__main__":
     ids = database.get_tracks_id();
 
     api_scrapper.get_audio_features(ids)
+
+
+"layers=" =  str(configuration)
+"last_loss=" =  str(mlp_classifier.loss_)
+"last_iteration=" =  str(mlp_classifier.n_iter_)
+"training_score=" =  str(training_set_score)
+"test_score=" =  str(test_set_score)
+"time_elapsed=" =  str(time_elapsed)

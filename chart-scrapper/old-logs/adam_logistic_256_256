@@ -1,0 +1,8 @@
+solver=adam
+activation=logistic
+layers=(256, 256)
+last_loss=1.1114092916321119
+last_iteration=709
+training_score=0.5563501001001001
+test_score=0.5034284284284284
+time_elapsed=4848.206147670746

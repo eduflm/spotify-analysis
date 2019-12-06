@@ -1,0 +1,8 @@
+solver=lbfgs
+activation=identity
+layers=(64, 64, 64, 64, 64, 64, 64, 64)
+last_loss=22.066165540128996
+last_iteration=3
+training_score=0.10153903903903903
+test_score=0.10125125125125126
+time_elapsed=8.096755266189575

@@ -1,0 +1,8 @@
+solver=sgd
+activation=tanh
+layers=(256, 256)
+last_loss=2.2903887418469826
+last_iteration=109
+training_score=0.12008883883883884
+test_score=0.12157157157157157
+time_elapsed=1284.2346379756927

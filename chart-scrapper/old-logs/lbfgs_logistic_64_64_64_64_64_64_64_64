@@ -1,0 +1,8 @@
+solver=lbfgs
+activation=logistic
+layers=(64, 64, 64, 64, 64, 64, 64, 64)
+last_loss=2.3025851840187896
+last_iteration=5
+training_score=0.1
+test_score=0.1
+time_elapsed=22.87739849090576

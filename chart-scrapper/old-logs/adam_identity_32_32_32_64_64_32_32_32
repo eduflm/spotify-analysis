@@ -1,0 +1,8 @@
+solver=adam
+activation=identity
+layers=(32, 32, 32, 64, 64, 32, 32, 32)
+last_loss=2.2867400547797776
+last_iteration=61
+training_score=0.13433433433433434
+test_score=0.13148148148148148
+time_elapsed=227.6651575565338

@@ -1,0 +1,8 @@
+solver=sgd
+activation=identity
+layers=(64, 64, 64, 64, 64, 64, 64, 64)
+last_loss=nan
+last_iteration=2428
+training_score=0.1
+test_score=0.1
+time_elapsed=7894.408082962036

@@ -1,0 +1,8 @@
+solver=adam
+activation=relu
+layers=(32, 32, 32, 32)
+last_loss=2.005719729227225
+last_iteration=271
+training_score=0.24553303303303303
+test_score=0.24164164164164165
+time_elapsed=1755.0141639709473

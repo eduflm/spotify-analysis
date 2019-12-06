@@ -1,0 +1,8 @@
+solver=sgd
+activation=logistic
+layers=(32, 32, 32, 64, 64, 32, 32, 32)
+last_loss=2.30273265119665
+last_iteration=13
+training_score=0.1
+test_score=0.1
+time_elapsed=99.3205463886261
